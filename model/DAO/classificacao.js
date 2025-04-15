@@ -38,3 +38,73 @@ const inserirClassificacao=async function (classificacao) {
     }
 }
 
+//funcao para atualizar classificacao
+const updateClassificacao=async function (classficacao) {
+    try {
+        let sql=`update tbl_classificacao set classificacao = '${classficacao.classficacao}'
+                                                where id = ${classficacao.id_classificacao}`
+
+        let result=await prisma.$executeRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+    
+}
+
+//funcao para deletar classificacao
+const deleteClassificacao=async function (id_classificacao) {
+    try {
+        let sql=`delete from tbl_classificacao where id = ${id_classificacao}`
+        let result=await prisma.$executeRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+
+//funcao para retornar todas as classificacoes
+const selectAllClassificacao=async function () {
+    try {
+        let sql=`select * from tbl_classificacao order by id desc`
+        let result=await prisma.$queryRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+
+//funcao para buscar uma classficacao pelo id
+const selectByIdClassificacao=async function (id_classificacao) {
+    try {
+        let sql=`select * from tbl_classificacao where id = ${id_classificacao}`
+        let result=await prisma.$queryRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+
+module.exports={
+    inserirClassificacao,
+    updateClassificacao, 
+    deleteClassificacao,
+    selectAllClassificacao,
+    selectByIdClassificacao
+}

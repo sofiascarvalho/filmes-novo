@@ -49,6 +49,7 @@ const insertFilme= async function(filme){
 
     
 }
+
 //funcao para atualizar um filme existente
 const updateFilme= async function(filme){
     try {
@@ -70,6 +71,7 @@ const updateFilme= async function(filme){
         return false
     }
 }
+
 //funcao para excluir um filme existente
 const deleteFilme=async function (id) {
     try {
@@ -85,6 +87,7 @@ const deleteFilme=async function (id) {
         return false
     }
 }
+
 //funcao para retornar todos os filmes existentes
 const selectAllFilme=async function () {
     try {
@@ -103,6 +106,7 @@ const selectAllFilme=async function () {
         return false
     }
 }
+
 //funcao para buscar um filme pelo id
 const selectByIdFilme=async function (id) {
     try {

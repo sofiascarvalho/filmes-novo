@@ -34,3 +34,71 @@ const inserirNacioalidade=async function (nacionalidade) {
         return false
     }
 }
+
+//funcao para atualizar nacionalidade
+const updateNacionalidade=async function (nacionalidade) {
+    try {
+        let sql=`update tbl_nacionalidade set nacionalidade = ${nacionalidade.nacionalidade}`
+        let result=await prisma.$executeRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+
+//funcao para deletar nacionalidade
+const deleteNacionalidade=async function (id_nacionalidade) {
+    try {
+        let sql=`delete from tbl_nacionalidade where id = ${id_nacionalidade}`
+        let result=await prisma.$executeRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+
+//funcao para retornar todas as nacionalidades
+const selectAllNacionalidade=async function () {
+    try {
+        let sql=`select * from tbl_nacionalidade order by id desc`
+        let result=await prisma.$queryRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+
+//funcao para buscar nacionalidade pelo id
+const selectByIdNacionalidade=async function (id_nacionalidade) {
+    try {
+        let sql=`select * from tbl_nacionalidade where id = ${id_nacionalidade}`
+        let result=await prisma.$queryRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+
+module.exports={
+    inserirNacioalidade,
+    updateNacionalidade,
+    deleteNacionalidade,
+    selectAllNacionalidade,
+    selectByIdNacionalidade
+}

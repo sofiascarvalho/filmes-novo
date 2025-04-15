@@ -37,24 +37,74 @@ const inserirGenero=async function (genero) {
 }
 //funcao para atualizar genero
 const updateGenero=async function (genero) {
-    
+    try {
+        let sql=`update tbl_genero set genero = '${genero.genero}'
+                                    where id = ${genero.id_genero}`
+
+        let result=await prisma.$executeRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        console.log(error);
+        return false
+    }
 }
 //funcao para deletar genero existente
 const deleteGenero=async function (id_genero) {
-    
+   try {
+    let sql=`delete from tbl_genero where id = ${id_genero}`
+
+    let result=await prisma.$executeRawUnsafe(sql)
+    if(result)
+        return true
+    else
+        return false
+
+   } catch (error) {
+    return false
+   } 
 }
 //funcao para retornar todos os generos existentes
 const selectAllGenero=async function () {
-    
+    try {
+        let sql=`select * from tbl_genero order by id desc`
+
+        let result=await prisma.$queryRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
 }
 //funcao para buscar genero pelo id
 const selectByIdGenero=async function (id_genero) {
-    
+    try {
+        let sql=`select * from tbl_genero where id = ${id_genero}`
+
+        let result=await prisma.$queryRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
 }
 
 
 
 
 module.exports={
-    inserirGenero
+    inserirGenero,
+    updateGenero,
+    deleteGenero,
+    selectAllGenero,
+    selectByIdGenero
 }

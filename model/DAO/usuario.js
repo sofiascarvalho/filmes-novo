@@ -38,3 +38,74 @@ const inserirUsuario=async function (usuario) {
         return false
     }
 }
+
+//funcao para atualizar um usuario
+const updateUsuario=async function (usuario) {
+    try {
+        let sql=`update tbl_usuario set nome_usuario = '${usuario.nome_usuario}',
+                                        email_usuario = '${usuario.email_usuario}'
+                                    where id = ${usuario.id_usuario}`
+
+        let result=await prisma.$executeRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+//funcao para deletar usuario
+const deleteUsuario=async function (id_usuario) {
+    try {
+        let sql=`delete from tbl_usuario where id = ${id_usuario}`
+
+        let result=await prisma.$executeRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+//funcao para retornar todos os usuarios existentes
+const selectAllUsuario=async function () {
+    try {
+        let sql=`select * from tbl_usuario order by id desc`
+
+        let result=await prisma.$queryRawUnsafe(sql)
+        if(result)
+            return true
+        else
+            return false
+
+    } catch (error) {
+        return false
+    }
+}
+//funcao para buscar um usuario pelo id
+const selectByIdUsuario=async function (id_usuario) {
+   try {
+    let sql=`select * from tbl_usuario where id = ${id_usuario}`
+
+    let result=await prisma.$queryRawUnsafe(sql)
+    if(result)
+        return true
+    else
+        return false
+    
+   } catch (error) {
+        return false
+   } 
+}
+
+module.exports={
+    inserirUsuario,
+    updateUsuario,
+    deleteUsuario,
+    selectAllUsuario,
+    selectByIdUsuario
+}

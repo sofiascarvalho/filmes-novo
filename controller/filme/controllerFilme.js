@@ -37,7 +37,7 @@ const inserirFilme=async function(filme, contentType){
                     return message.ERROR_INTERNAL_SERVER_MODEL //500
             }
         }else{
-            return message.ERROR_CONTENT_tYPE //415
+            return message.ERROR_CONTENT_TYPE //415
         }
     } catch (error) {
         return message.ERROR_INTERNAL_SERVER_CONTROLLER //500
@@ -178,25 +178,6 @@ const buscarFilme=async function(id){
     } catch (error) {
         return message.ERROR_INTERNAL_SERVER_CONTROLLER //500
     }
-}
-
-const inserirIdioma=async function () {
-    
-}
-const inserirGenero=async function () {
-    
-}
-const inserirUsuario=async function () {
-    
-}
-const inserirSexo=async function () {
-    
-}
-const inserirNacionalidade=async function () {
-    
-}
-const inserirClassificacao=async function () {
-    
 }
 
 module.exports={

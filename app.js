@@ -41,6 +41,9 @@ app.use((request, response, next)=>{
 })
 
 
+/*************************************FILMES********************************************/
+
+
 const controllerFilme=require('./controller/filme/controllerFilme')
 
 app.post('/v1/controle-filmes/filme', cors(), bodyParserJSON, async function (request, response){
@@ -99,6 +102,23 @@ app.put('/v1/controle-filmes/filme/:id', cors(), bodyParserJSON, async function 
 
     response.status(resultFilme.status_code)
     response.json(resultFilme)
+})
+
+
+
+
+
+/*************************************CLASSIFICACAO********************************************/
+
+const controllerClassificacao=require('./controller/classificacao/controllerClassificação.js')
+
+app.post('/v1/controle-classificacoes/classificacao', cors(), bodyParserJSON, async function (request, response) {
+    let contentType=request.headers['content-type']
+    let dadosBody=request.body
+    let resultClass=await controllerClassificacao.inserirClassificacao(dadosBody, contentType)
+
+    response.status(resultClass.status_code)
+    response.json(resultClass)
 })
 
 

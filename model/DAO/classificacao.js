@@ -39,10 +39,10 @@ const inserirClassificacao=async function (classificacao) {
 }
 
 //funcao para atualizar classificacao
-const updateClassificacao=async function (classficacao) {
+const updateClassificacao=async function (classificacao) {
     try {
-        let sql=`update tbl_classificacao set classificacao = '${classficacao.classficacao}'
-                                                where id = ${classficacao.id_classificacao}`
+        let sql=`update tbl_classificacao set classificacao = '${classificacao.classificacao}'
+                                                where id = ${classificacao.id_classificacao}`
 
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)

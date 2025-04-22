@@ -43,7 +43,7 @@ const updateGenero=async function (genero) {
 
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -59,7 +59,7 @@ const deleteGenero=async function (id_genero) {
 
     let result=await prisma.$executeRawUnsafe(sql)
     if(result)
-        return true
+        return result
     else
         return false
 
@@ -74,7 +74,7 @@ const selectAllGenero=async function () {
 
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -89,7 +89,7 @@ const selectByIdGenero=async function (id_genero) {
 
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 

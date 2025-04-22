@@ -41,11 +41,13 @@ const updateNacionalidade=async function (nacionalidade) {
         let sql=`update tbl_nacionalidade set nacionalidade = ${nacionalidade.nacionalidade}`
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
     } catch (error) {
+        console.log(error);
+        
         return false
     }
 }
@@ -53,10 +55,10 @@ const updateNacionalidade=async function (nacionalidade) {
 //funcao para deletar nacionalidade
 const deleteNacionalidade=async function (id_nacionalidade) {
     try {
-        let sql=`delete from tbl_nacionalidade where id = ${id_nacionalidade}`
+        let sql=`delete from tbl_nacionalidade where id_nacionalidade = ${id_nacionalidade}`
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -68,10 +70,10 @@ const deleteNacionalidade=async function (id_nacionalidade) {
 //funcao para retornar todas as nacionalidades
 const selectAllNacionalidade=async function () {
     try {
-        let sql=`select * from tbl_nacionalidade order by id desc`
+        let sql=`select * from tbl_nacionalidade order by id_nacionalidade desc`
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -83,10 +85,10 @@ const selectAllNacionalidade=async function () {
 //funcao para buscar nacionalidade pelo id
 const selectByIdNacionalidade=async function (id_nacionalidade) {
     try {
-        let sql=`select * from tbl_nacionalidade where id = ${id_nacionalidade}`
+        let sql=`select * from tbl_nacionalidade where id_nacionalidade = ${id_nacionalidade}`
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 

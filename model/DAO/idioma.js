@@ -41,7 +41,7 @@ const updateIdioma=async function (idioma) {
 
         let resultIdioma=await prisma.$executeRawUnsafe(sql)
         if(resultIdioma)
-            return true
+            return resultIdioma
         else
             return false
 
@@ -57,7 +57,7 @@ const deleteIdioma=async function (id_idioma) {
 
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -72,7 +72,7 @@ const selectAllIdioma=async function () {
 
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -87,7 +87,7 @@ const selectByIdIdioma=async function (id_idioma) {
 
     let result=await prisma.$queryRawUnsafe(sql)
     if(result)
-        return true
+        return result
     else
         return false
     

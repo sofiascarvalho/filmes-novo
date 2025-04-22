@@ -47,7 +47,7 @@ const updateSexo= async function(sexo){
 
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
     } catch (error) {
@@ -63,7 +63,7 @@ const deleteSexo=async function (id_sexo) {
         let result = await prisma.$executeRawUnsafe(sql)
 
         if(result)
-            return true
+            return result
         else
             return false
     } catch (error) {

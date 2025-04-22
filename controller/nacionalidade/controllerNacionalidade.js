@@ -42,6 +42,8 @@ const updateNacionalidade=async function (id_nacionalidade, nacionalidade, conte
                 return message.ERROR_REQUIRED_FIELDS
             }else{
                 let resultNacio=await nacioDAO.selectByIdNacionalidade(parseInt(id_nacionalidade))
+                console.log(resultNacio);
+                
                 if (resultNacio!=false||typeof(resultNacio)=='object'){
                     if(resultNacio.length>0){
                         nacionalidade.id_nacionalidade=parseInt(id_nacionalidade)

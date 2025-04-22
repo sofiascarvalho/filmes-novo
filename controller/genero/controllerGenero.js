@@ -14,7 +14,7 @@ const genDAO=require('../../model/DAO/genero.js')
 const inserirGenero=async function (genero, contentType) {
     try {
         if(String(contentType).toLowerCase()=='application/json'){
-            if(genero.genero==''||genero.genero==undefined||genero.genero==null||genero.genero.lenght>45){
+            if(genero.genero==''||genero.genero==undefined||genero.genero==null||genero.genero.length>45){
                 return message.ERROR_REQUIRED_FIELDS
             }else{
                 let result=await genDAO.inserirGenero(genero)
@@ -35,13 +35,13 @@ const updateGenero=async function (id_genero, genero, contentType) {
     try {
         if(String(contentType).toLowerCase()=='application/json'){
             if( id_genero==''       ||id_genero==undefined      ||id_genero==null       ||isNaN(id_genero)          ||id_genero<=0  ||
-                genero.genero==''   ||genero.genero==undefined  ||genero.genero==null   ||genero.genero.lenght>45
+                genero.genero==''   ||genero.genero==undefined  ||genero.genero==null   ||genero.genero.length>45
         ){
             return message.ERROR_REQUIRED_FIELDS
         }else{
             let result=await genDAO.selectByIdGenero(parseInt(id_genero))
             if(result!=false||typeof(result)=='object'){
-                if(result.lenght>0){
+                if(result.length>0){
                     genero.id_genero=parseInt(id_genero)
                     let resultGen=await genDAO.updateGenero(genero)
                     if(resultGen)
@@ -70,7 +70,7 @@ const deleteGenero=async function (id_genero) {
         }else{
             let result=await genDAO.selectByIdGenero(parseInt(id_genero))
             if(result!=false||typeof(result)=='object'){
-                if(result.lenght>0){
+                if(result.length>0){
                     let resultGen=await genDAO.deleteGenero(parseInt(id_genero))
                     if(resultGen){
                         return message.SUCCESS_DELETED_ITEM
@@ -95,10 +95,10 @@ const selectAllGenero=async function () {
         let resultGen=await genDAO.selectAllGenero()
 
         if(resultGen!=false||typeof(resultGen)=='object'){
-            if(resultGen.lenght>0){
+            if(resultGen.length>0){
                 dadosGenero.status=true
                 dadosGenero.status_code=200
-                dadosGenero.items=resultGen.lenght
+                dadosGenero.items=resultGen.length
                 dadosGenero.genrs=resultGen
 
                 return dadosGenero
@@ -121,7 +121,7 @@ const selectByIdGenero=async function (id_genero) {
             dadosGenero={}
             let resultGen=await genDAO.selectByIdGenero(parseInt(id_genero))
             if(resultGen!=false||typeof(resultGen)=='object'){
-                if(resultGen.lenght>0){
+                if(resultGen.length>0){
                     dadosGenero.status=true
                     dadosGenero.status_code=200
                     dadosGenero.genrs=resultGen

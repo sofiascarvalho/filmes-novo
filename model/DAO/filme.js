@@ -64,7 +64,7 @@ const updateFilme= async function(filme){
         let resultFilme=await prisma.$executeRawUnsafe(sql)
 
         if(resultFilme)
-            return true
+            return resultFilme
         else
             return false
     } catch (error) {
@@ -80,7 +80,7 @@ const deleteFilme=async function (id) {
         let result = await prisma.$executeRawUnsafe(sql)
 
         if(result)
-            return true
+            return result
         else
             return false
     } catch (error) {

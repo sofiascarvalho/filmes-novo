@@ -298,7 +298,7 @@ app.post('/v1/controle-nacionalidade/nacionalidade', cors(), bodyParserJSON, asy
 
 app.get('/v1/controle-nacionalidade/nacionalidade', cors(), async function (request, response) {
     //chama a funcção para retornar os filmes
-    let resultNacio=await controllerNacio.selectByIdNacionalidade()
+    let resultNacio=await controllerNacio.selectAllNacionalidade()
 
     response.status(resultNacio.status_code)
     response.json(resultNacio)

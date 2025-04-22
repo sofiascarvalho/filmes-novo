@@ -48,7 +48,7 @@ const updateUsuario=async function (usuario) {
 
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -63,7 +63,7 @@ const deleteUsuario=async function (id_usuario) {
 
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -78,7 +78,7 @@ const selectAllUsuario=async function () {
 
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -93,7 +93,7 @@ const selectByIdUsuario=async function (id_usuario) {
 
     let result=await prisma.$queryRawUnsafe(sql)
     if(result)
-        return true
+        return result
     else
         return false
     

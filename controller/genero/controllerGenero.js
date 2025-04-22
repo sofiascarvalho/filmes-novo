@@ -93,6 +93,8 @@ const selectAllGenero=async function () {
     try {
         let dadosGenero={}
         let resultGen=await genDAO.selectAllGenero()
+        console.log(resultGen);
+        
 
         if(resultGen!=false||typeof(resultGen)=='object'){
             if(resultGen.length>0){

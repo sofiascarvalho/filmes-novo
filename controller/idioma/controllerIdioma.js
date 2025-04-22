@@ -174,6 +174,8 @@ const selectAllIdioma=async function(){
         let dadosIdioma={}
         //chama a funcao para retronar os idiomas cadastrados 
         let resultIdioma=await idiomaDAO.selectAllIdioma()
+        console.log(resultIdioma);
+        
 
         if(resultIdioma!=false||typeof(resultIdioma)=='object'){
             if(resultIdioma.length>0){

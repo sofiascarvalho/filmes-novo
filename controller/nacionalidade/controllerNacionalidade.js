@@ -47,7 +47,7 @@ const updateNacionalidade=async function (id_nacionalidade, nacionalidade, conte
                 if (resultNacio!=false||typeof(resultNacio)=='object'){
                     if(resultNacio.length>0){
                         nacionalidade.id_nacionalidade=parseInt(id_nacionalidade)
-                        let result=await nacioDAO.updateIdioma(nacionalidade)
+                        let result=await nacioDAO.updateNacionalidade(nacionalidade)
                         if(result)
                             return message.SUCCESS_UPDATED_ITEM
                         else
@@ -63,6 +63,8 @@ const updateNacionalidade=async function (id_nacionalidade, nacionalidade, conte
             return message.ERROR_CONTENT_TYPE
         }
     } catch (error) {
+        console.log(error);
+        
         return message.ERROR_INTERNAL_SERVER_CONTROLLER
     }
 }

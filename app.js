@@ -458,6 +458,6 @@ app.put('/v1/controle-usuario/usuario/:id', cors(), bodyParserJSON, async functi
 
 
 
-app.listen('8080', function(){
+app.listen('3000', function(){
     console.log('API funcionando e aguardando requisições...')
 })

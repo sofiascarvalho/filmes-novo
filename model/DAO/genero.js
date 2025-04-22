@@ -39,7 +39,7 @@ const inserirGenero=async function (genero) {
 const updateGenero=async function (genero) {
     try {
         let sql=`update tbl_genero set genero = '${genero.genero}'
-                                    where id = ${genero.id_genero}`
+                                    where id_genero = ${genero.id_genero}`
 
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
@@ -55,7 +55,7 @@ const updateGenero=async function (genero) {
 //funcao para deletar genero existente
 const deleteGenero=async function (id_genero) {
    try {
-    let sql=`delete from tbl_genero where id = ${id_genero}`
+    let sql=`delete from tbl_genero where id_genero = ${id_genero}`
 
     let result=await prisma.$executeRawUnsafe(sql)
     if(result)
@@ -70,7 +70,7 @@ const deleteGenero=async function (id_genero) {
 //funcao para retornar todos os generos existentes
 const selectAllGenero=async function () {
     try {
-        let sql=`select * from tbl_genero order by id desc`
+        let sql=`select * from tbl_genero order by id_genero desc`
 
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
@@ -79,13 +79,15 @@ const selectAllGenero=async function () {
             return false
 
     } catch (error) {
+        console.log(error);
+        
         return false
     }
 }
 //funcao para buscar genero pelo id
 const selectByIdGenero=async function (id_genero) {
     try {
-        let sql=`select * from tbl_genero where id = ${id_genero}`
+        let sql=`select * from tbl_genero where id_genero = ${id_genero}`
 
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)

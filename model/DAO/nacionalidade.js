@@ -38,7 +38,7 @@ const inserirNacioalidade=async function (nacionalidade) {
 //funcao para atualizar nacionalidade
 const updateNacionalidade=async function (nacionalidade) {
     try {
-        let sql=`update tbl_nacionalidade set nacionalidade = ${nacionalidade.nacionalidade}`
+        let sql=`update tbl_nacionalidade set nacionalidade = '${nacionalidade.nacionalidade}'`
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
             return result

@@ -19,7 +19,7 @@ const inserirClassificacao=async function (classificacao, contentType) {
                 classificacao.classificacao==''         ||
                 classificacao.classificacao==undefined  ||
                 classificacao==null                     ||
-                classificacao.classificacao.lenght>10
+                classificacao.classificacao.length>100
             )
             {
                 return message.ERROR_REQUIRED_FIELDS
@@ -44,7 +44,7 @@ const updateClassificacao=async function (id_classificacao, classificacao, conte
     try {
         if(String(contentType).toLowerCase()=='application/json'){
             if(id_classificacao==''                 ||id_classificacao==undefined               ||id_classificacao==null        ||  isNaN(id_classificacao)         ||  id_classificacao<=0     ||
-                classificacao.classificacao==''     ||classificacao.classificacao==undefined    ||classificacao==null           ||  classificacao.classificacao.lenght>10
+                classificacao.classificacao==''     ||classificacao.classificacao==undefined    ||classificacao==null           ||  classificacao.classificacao.length>100
             )
             {
                 return message.ERROR_REQUIRED_FIELDS
@@ -52,7 +52,7 @@ const updateClassificacao=async function (id_classificacao, classificacao, conte
                 //validacao para verificar se o id existe no banco de dados
                 let result=await classDAO.selectByIdClassificacao(parseInt(id_classificacao))
                 if(result!=false||typeof(result)=='object'){
-                    if(result.lenght>0){
+                    if(result.length>0){
                         //update
                         //adiciona o id do filme no json com os dados
                         classificacao.id_classificacao=parseInt(id_classificacao)
@@ -84,7 +84,7 @@ const deleteClassificacao=async function (id_classificacao) {
             //validacao da existencia do id no banco de dados
             let result=await classDAO.selectByIdClassificacao(parseInt(id_classificacao))
             if(result!=false||typeof(result)=='object'){
-                if(result.lenght>0){
+                if(result.length>0){
                     let resultClass=await classDAO.deleteClassificacao(parseInt(id_classificacao))
                     if(resultClass){
                         return message.SUCCESS_DELETED_ITEM //200
@@ -107,11 +107,14 @@ const selectAllClassificacao=async function () {
     try {
         let dadosClass={}
         let resultClass=await classDAO.selectAllClassificacao()
+        console.log(resultClass);
+        
         if(resultClass!=false||typeof(resultClass)=='object'){
-            if(resultClass.lenght>0){
+
+            if(resultClass.length>0){
                 dadosClass.status=true
                 dadosClass.status_code=200
-                dadosClass.items=resultClass.lenght
+                dadosClass.items=resultClass.length
                 dadosClass.class=resultClass
 
                 return dadosClass

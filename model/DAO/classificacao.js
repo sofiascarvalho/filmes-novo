@@ -46,7 +46,7 @@ const updateClassificacao=async function (classificacao) {
 
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -62,7 +62,7 @@ const deleteClassificacao=async function (id_classificacao) {
         let sql=`delete from tbl_classificacao where id = ${id_classificacao}`
         let result=await prisma.$executeRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
@@ -74,14 +74,16 @@ const deleteClassificacao=async function (id_classificacao) {
 //funcao para retornar todas as classificacoes
 const selectAllClassificacao=async function () {
     try {
-        let sql=`select * from tbl_classificacao order by id desc`
+        let sql=`select * from tbl_classificacao order by id_classificacao desc`
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
     } catch (error) {
+        console.log(error);
+        
         return false
     }
 }
@@ -89,14 +91,15 @@ const selectAllClassificacao=async function () {
 //funcao para buscar uma classficacao pelo id
 const selectByIdClassificacao=async function (id_classificacao) {
     try {
-        let sql=`select * from tbl_classificacao where id = ${id_classificacao}`
+        let sql=`select * from tbl_classificacao where id_classificacao = ${id_classificacao}`
         let result=await prisma.$queryRawUnsafe(sql)
         if(result)
-            return true
+            return result
         else
             return false
 
     } catch (error) {
+        console.log(error)
         return false
     }
 }

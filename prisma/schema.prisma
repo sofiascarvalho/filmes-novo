@@ -1,19 +1,49 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model tbl_teste{
-  id Int @id @default(autoincrement())
-  nome String
+model tbl_classificacao {
+  id_classificacao Int     @id @default(autoincrement())
+  classificacao    String? @db.VarChar(100)
+}
+
+model tbl_filme {
+  id              Int      @id @default(autoincrement())
+  nome            String   @db.VarChar(50)
+  duracao         DateTime @db.Time(0)
+  sinopse         String   @db.Text
+  data_lancamento DateTime @db.Date
+  foto_capa       String?  @db.VarChar(200)
+  link_trailer    String?  @db.VarChar(200)
+}
+
+model tbl_genero {
+  id_genero Int     @id @default(autoincrement())
+  genero    String? @db.VarChar(45)
+}
+
+model tbl_idioma {
+  id_idioma Int    @id @default(autoincrement())
+  idioma    String @db.VarChar(45)
+}
+
+model tbl_nacionalidade {
+  id_nacionalidade Int     @id @default(autoincrement())
+  nacionalidade    String? @db.VarChar(30)
+}
+
+model tbl_sexo {
+  id_sexo Int     @id @default(autoincrement())
+  sexo    String? @db.VarChar(10)
+}
+
+model tbl_usuario {
+  id_usuario    Int     @id @default(autoincrement())
+  nome_usuario  String? @db.VarChar(200)
+  email_usuario String? @db.VarChar(200)
 }
